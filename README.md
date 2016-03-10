@@ -1,1 +1,1 @@
-Tasks in programming-101-Ruby
+Solutions for tasks in programming-101-Ruby
