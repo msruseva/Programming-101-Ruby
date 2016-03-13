@@ -1,0 +1,10 @@
+<h1> SIGNUP </h1>
+
+<%= simple_form_for @user do |f|%> 
+	<%= f.input :first_name %><br/>
+	<%= f.input :last_name %><br/>
+	<%= f.input :email %><br/>
+	<%= f.input :password %><br/>
+	<%= f.input :password_confirmation %>
+	<%= f.submit "Save" %>
+<% end %>

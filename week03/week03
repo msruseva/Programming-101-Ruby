@@ -1,0 +1,96 @@
+- instance_of? - дали обектът е класа на обекта, който търсим
+- kind_of? - дали обектът дали е един от ancestors
+
+--- map, filter, reduce ---
+
+- map: [a1,..,an] и ф-я f - трансформира списъци
+---> връща нов списък, където всеки елемемент е минал през ф-ята
+[f[a1], f[a2],..., f[an]]
+
+- filter: [a1,..,an] и предикат p 
+---> връща елементите, които са true за p
+[ai  за които p(ai) == true, където i е от 1 до n]
+
+- reduce: arr = [a1,..,an], z (начална ст-т), op (бинарна операция - двуаргументна ф-я)
+---> връща израз от вида: z op a1 op a2 ... op an
+за всеки елемент x от arr: Нека z = op(z, x), където op = {|x,y| x + y}
+
+|acc, x| - acc - aкомулирана до сега стойност, x - поредният елемент от списъка
+
+- как се намира отрицанието на даден блок
+ def negative_block(&block)
+    Proc.new {|x| !block.call(x)}
+  end
+
+- proc - тип обект, от който е един блок
+- създава се proc с - Proc.new/proc{}
+- Hash#map - връща масив
+- ако each бъде подаден без операция - връща обект от тип Enumerator
+
+--- Задачата Numbers ---
+
+- пазим числата в масив, правим проверки с include
+- имплементираме each за да вкараме Enumerable
+- филтрите имат общо, затова това общо трябва да го изведем в Module (имат общ интерфейс)
+f = Filter.new
+
+module Filterable
+  def satisfy?(x)
+     
+  end
+class Filter
+  include Filterable
+end
+
+class TypeFilter
+  include Filterable
+end
+
+class SignFilter
+  include Filterable
+end
+
+--- 05.12.15 ---
+
+--- Enumerator ---
+
+- Enumerable - вътрешен итератор (итерира по себе си)
+- Enumerator - външен итератор, включва Enumerable
+- Object#enum_for - създава Enumerator
+- Object#to_enum - създава Enumerator
+- Enumerator#next - следващ елемент от енумератора(мести курсора на следващия елемент)
+- Enumerator#next - дава втория елемент(само поглеждаме какъв е)
+- each_with_object - подобно на reduce, удобно за hash
+
+- Range -a..b
+        -a...b
+
+--- Sets ---
+
+- хешове без ст-т (Set.new)
+- require 'set'
+
+--- Lasy enumerators ---
+
+- можем да използваме Enumerable методите
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
