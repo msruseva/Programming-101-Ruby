@@ -1,6 +1,0 @@
-- bundle exec rails generate scaffold Post name:strig content:text
-- bundle exec rake db:migrate
-- по-бърз достъп до командата bundle exec
-- save! - хвърля грешка
-- save - връща true/false
-
