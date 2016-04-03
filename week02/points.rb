@@ -37,8 +37,3 @@ class InfinitePlane
   end
 
 end
-
-plane = InfinitePlane.new 0, 0
-plane.move_to_directions '>>><<<~>>>~^^^'
-puts plane.to_array
-
