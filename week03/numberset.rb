@@ -86,11 +86,3 @@ class SignFilter
   end
 
 end
-
-numbers = NumberSet.new
-[-3, -2, -1, 0, 1, 2, 3, 4, 5].each do |number|
-  numbers << number
-end
-p numbers
-
-p numbers [SignFilter.new(:non_negative) & Filter.new { |number| number.even? }].to_a #=> [0, 2, 4]
