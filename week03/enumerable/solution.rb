@@ -22,30 +22,14 @@ module MyEnumerable
 
   end
 
-  def negative_block(&block)
-    Proc.new { |x| !block.call(x) }
-  end
-
-  def reject
-    Array.new.tap do |new_array|
-      each do |element|
-        unless yield element
-          new_array << element
-        end
-      end
-    end
-  end
-
   def reject_smarter(&block)
     filter(negative_block(&block))
   end
 
   def first
-
     each do |element|
       return element
     end
-
   end
 
   def reduce(initial = nil)
@@ -67,27 +51,11 @@ module MyEnumerable
     initial
   end
 
-  def any?
-    each do |element|
-      return true if yield element
-    end
-  end
-
-  def any_smarter?(block)
+  def any?(block)
     filter(&block).size > 0
   end
 
   def all?
-    each do |element|
-      unless yield element
-        return false
-      end
-      return true
-    end
-
-  end
-
-  def all_smarter?
     filter(&block).size == size
   end
 
@@ -99,22 +67,7 @@ module MyEnumerable
     end
   end
 
-  def count(element = nil)
-    counter = 0
-    each do |item|
-      if !element.nil? and element == item
-        counter += 1
-      end
-    end
-
-    if element.nil?
-      return self.size
-    end
-
-    counter
-  end
-
-  def count_smarter
+  def count
     if element.nil?
       return self.size
     end
@@ -122,13 +75,7 @@ module MyEnumerable
     filter { |x| x == element }.size
   end
 
-  def size
-    counter = 0
-    each { |element| counter += 1 }
-    counter
-  end
-
-  def size_smarter
+  def sizer
     map { |element| 1 }.reduce(0) { |acc, x| acc + x }
   end
 
