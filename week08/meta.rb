@@ -10,14 +10,6 @@ class Object
   end
 end
 
-=begin
-class Symbol
-  def to_proc
-    proc { |arg, *args| arg.public_send(self, *args)}
-  end
-end
-=end
-
 class String
   def to_proc
     proc do |arg, *args|
@@ -60,11 +52,3 @@ class TestClass
     foo + 42
   end
 end
-
-t = TestClass.new
-p t.foo #=> NameError
-
-t.send(:foo=, 42)
-t.send(:foo) #=> 42
-
-t.some_method #=> 84
