@@ -45,10 +45,3 @@ module GameOfLife
     end
   end
 end
-
-board    = GameOfLife::Board.new [1, 2], [1, 3], [1, 4]
-next_gen = board.next_generation
-
-p next_gen[1, 2] # false
-p next_gen[0, 3] # true
-p next_gen[2, 3] # true
